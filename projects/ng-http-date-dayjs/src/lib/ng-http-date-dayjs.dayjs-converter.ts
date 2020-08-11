@@ -1,6 +1,9 @@
-import dayjs, {Dayjs} from 'dayjs';
+import * as dayjsImported from 'dayjs';
+import {Dayjs} from 'dayjs';
 import {NgHttpDateConverter} from 'ng-http-date-core';
 import {Injectable} from '@angular/core';
+
+const dayjs = dayjsImported;
 
 @Injectable({providedIn: 'root'})
 export class NgHttpDateDayjsDayjsConverter extends NgHttpDateConverter<Dayjs> {

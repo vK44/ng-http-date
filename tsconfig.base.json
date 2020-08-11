@@ -22,8 +22,6 @@
       ],
       "ng-http-date-dayjs": [
         "dist/ng-http-date-dayjs/ng-http-date-dayjs",
-        "dist/ng-http-date-dayjs",
-        "dist/ng-http-date-dayjs/ng-http-date-dayjs",
         "dist/ng-http-date-dayjs"
       ],
       "ng-http-date-moment": [

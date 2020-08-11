@@ -1,6 +1,9 @@
 import {NgHttpDateConverter} from 'ng-http-date-core';
 import {Injectable} from '@angular/core';
-import moment, {Moment} from 'moment';
+import * as momentImported from 'moment';
+import {Moment} from 'moment';
+
+const moment = momentImported;
 
 @Injectable({providedIn: 'root'})
 export class NgHttpDateMomentMomentConverter extends NgHttpDateConverter<Moment> {
