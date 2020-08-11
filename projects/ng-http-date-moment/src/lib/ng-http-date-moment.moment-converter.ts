@@ -1,11 +1,11 @@
 import {NgHttpDateConverter} from 'ng-http-date-core';
 import {Injectable} from '@angular/core';
-import * as moment from 'moment';
+import moment, {Moment} from 'moment';
 
 @Injectable({providedIn: 'root'})
-export class NgHttpDateMomentMomentConverter extends NgHttpDateConverter<moment.Moment> {
+export class NgHttpDateMomentMomentConverter extends NgHttpDateConverter<Moment> {
 
-  convert(dateString: string): moment.Moment {
+  convert(dateString: string): Moment {
     const maybeMoment = moment(dateString);
     if (maybeMoment.isValid()) {
       return maybeMoment;
