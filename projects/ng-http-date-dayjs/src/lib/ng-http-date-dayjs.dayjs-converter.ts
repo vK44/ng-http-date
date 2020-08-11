@@ -1,11 +1,14 @@
-import * as dayjs from 'dayjs';
+import * as dayjsImported from 'dayjs';
+import {Dayjs} from 'dayjs';
 import {NgHttpDateConverter} from 'ng-http-date-core';
 import {Injectable} from '@angular/core';
 
-@Injectable({providedIn: 'root'})
-export class NgHttpDateDayjsDayjsConverter extends NgHttpDateConverter<dayjs.Dayjs> {
+const dayjs = dayjsImported;
 
-  convert(dateString: string): dayjs.Dayjs {
+@Injectable({providedIn: 'root'})
+export class NgHttpDateDayjsDayjsConverter extends NgHttpDateConverter<Dayjs> {
+
+  convert(dateString: string): Dayjs {
     const maybeDay = dayjs(dateString);
     if (maybeDay.isValid()) {
       return maybeDay;
