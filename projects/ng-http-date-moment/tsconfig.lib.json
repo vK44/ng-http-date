@@ -2,7 +2,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "esModuleInterop": true,
     "outDir": "../../out-tsc/lib",
     "target": "es2015",
     "declaration": true,
