@@ -1,6 +1,6 @@
 {
   "name": "ng-http-date-moment",
-  "version": "10.0.0-beta.0",
+  "version": "9.0.0-beta.0",
   "description": "Detects and parses dates in Angular Http reponses and creates Moment-objects within the reponse",
   "homepage": "https://github.com/vkennke/ng-http-date",
   "author": "Valentin Kennke <kennke@mailbox.org> (https://github.com/vkennke)",
@@ -21,12 +21,12 @@
   },
   "license": "GPL-3.0-or-later",
   "peerDependencies": {
-    "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0",
+    "@angular/common": "^9.0.0",
+    "@angular/core": "^9.0.0",
     "moment": "^2.27.0",
-    "ng-http-date-core": "^10.0.0"
+    "ng-http-date-core": "^9.0.0"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^1.13.0"
   }
 }
