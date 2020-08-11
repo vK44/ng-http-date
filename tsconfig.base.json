@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "paths": {
+      "ng-http-date-core": [
+        "dist/ng-http-date-core/ng-http-date-core",
+        "dist/ng-http-date-core"
+      ],
+      "ng-http-date-dayjs": [
+        "dist/ng-http-date-dayjs/ng-http-date-dayjs",
+        "dist/ng-http-date-dayjs",
+        "dist/ng-http-date-dayjs/ng-http-date-dayjs",
+        "dist/ng-http-date-dayjs"
+      ],
+      "ng-http-date-moment": [
+        "dist/ng-http-date-moment/ng-http-date-moment",
+        "dist/ng-http-date-moment"
+      ]
+    }
+  }
+}

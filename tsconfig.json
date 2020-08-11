@@ -1,0 +1,38 @@
+/*
+  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
+  It is not intended to be used to perform a compilation.
+
+  To learn more about this file see: https://angular.io/config/solution-tsconfig.
+*/
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/ng-http-date/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-http-date/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/example/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/ng-http-date-dayjs/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-http-date-dayjs/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-http-date-dayjs/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-http-date-dayjs/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-http-date-moment/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-http-date-moment/tsconfig.spec.json"
+    }
+  ]
+}
