@@ -1,5 +1,13 @@
 # NgHttpDate
 
+  [![NPM Version][npm-image]][npm-url]
+  [![NPM Downloads][downloads-image]][downloads-url]
+  
+[npm-image]: https://img.shields.io/npm/v/ng-http-date-core.svg
+[npm-url]: https://npmjs.org/package/ng-http-date-core
+[downloads-image]: https://img.shields.io/npm/dm/ng-http-date-core.svg
+[downloads-url]: https://npmjs.org/package/ng-http-date-core  
+
 ## What?
 
 NgHttpDate is an [Angular](https://github.com/angular/angular) library that detects **dates** in HTTP JSON reponses and modifies the responses to contain `Date` objects (or Day.js or Moment via Plugin) instead of `String` objects.
