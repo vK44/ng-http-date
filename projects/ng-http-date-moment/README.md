@@ -1,5 +1,14 @@
 # NgHttpDate Moment Plugin
 
+  [![NPM Version][npm-image]][npm-url]
+  [![NPM Downloads][downloads-image]][downloads-url]
+  
+[npm-image]: https://img.shields.io/npm/v/ng-http-date-moment.svg
+[npm-url]: https://npmjs.org/package/ng-http-date-moment
+[downloads-image]: https://img.shields.io/npm/dm/ng-http-date-moment.svg
+[downloads-url]: https://npmjs.org/package/ng-http-date-moment  
+
+
 ## What?
 
 Moment plugin for [NgHttpDate](https://github.com/vkennke/ng-http-date).
