@@ -63,7 +63,7 @@ When a date is detected, the response is modified to create a `Date` object for 
 
 ## Performance
 
-The core library is TODO kB gzipped.  
+The core library is 2 kB gzipped. The gzipped size of the plugins is 1 kB each. 
 The detection and creation of `Date` objects has nearly no performance impact. For example, modifying a [small size nested JSON object](https://github.com/vkennke/ng-http-date/blob/master/projects/ng-http-date-core/src/lib/ng-http-date.interceptor.spec.ts#L82-L104) 1.000.000 times is done in ~ 8 seconds.
 That's 0.008 ms per object.
 
