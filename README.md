@@ -79,34 +79,9 @@ That's 0.008 ms per object.
 
 If you want NgHttpDate to use Day.js objects or Moment objects instead of EcmaScript Dates you can install the appropriate plugin:
 
-```shell script
-npm i ng-http-date-dayjs
+[Installation of ng-http-date-dayjs](https://github.com/vkennke/ng-http-date/tree/master/projects/ng-http-date-dayjs)
 
-```
-or
-```shell script
-npm i ng-http-date-moment
-```
-
-You also have to import the appropriate module in your root module:
-
-```typescript
-imports: [
-  ...
-  NgHttpDateDayjsModule,
-  ...
-]
-```
-
-or
-
-```typescript
-imports: [
-  ...
-  NgHttpDateMomentModule,
-  ...
-]
-```
+[Installation of ng-http-date-moment](https://github.com/vkennke/ng-http-date/tree/master/projects/ng-http-date-moment)
 
 ## What's next?
 
