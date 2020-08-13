@@ -1,3 +1,0 @@
-# NgHttpDate-Moment
-
-TODO
