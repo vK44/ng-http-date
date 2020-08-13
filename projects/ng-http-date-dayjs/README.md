@@ -1,3 +1,0 @@
-# NgHttpDate-Day.js
-
-TODO
