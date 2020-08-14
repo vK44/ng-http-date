@@ -1,6 +1,6 @@
 {
   "name": "ng-http-date-core",
-  "version": "10.0.4",
+  "version": "10.0.5",
   "description": "Detects and parses dates in Angular Http reponses and creates Date-objects within the reponse",
   "homepage": "https://github.com/vkennke/ng-http-date",
   "author": "Valentin Kennke <kennke@mailbox.org> (https://github.com/vkennke)",
