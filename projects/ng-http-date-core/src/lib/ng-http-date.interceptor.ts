@@ -32,24 +32,42 @@ export class NgHttpDateInterceptor implements HttpInterceptor {
 
   private handleEvent(response: HttpEvent<any>): void {
     if (response instanceof HttpResponse) {
-      this.testAndConvert(response.body);
+      this.testAndConvert(response);
     }
   }
 
-  private testAndConvert(bodyOrValue: unknown): void {
-    if (bodyOrValue && typeof bodyOrValue === 'object') {
-      const keys = Object.keys(bodyOrValue);
+  private testAndConvert(response: HttpResponse<any>): void {
+    switch (typeof response.body) {
+      case 'object':
+        this.testAndConvertObject(response.body);
+        break;
+      case 'string':
+        this.testAndConvertString(response);
+        break;
+    }
+  }
+
+  private testAndConvertObject(something: unknown): void {
+    if (something && typeof something === 'object') {
+      const keys = Object.keys(something);
       let i = keys.length;
       while (i--) {
         const key = keys[i];
-        const value = bodyOrValue[key];
+        const value = something[key];
         const converted = this.convertToDate(value);
         if (converted) {
-          bodyOrValue[key] = converted;
+          something[key] = converted;
         } else {
-          this.testAndConvert(value);
+          this.testAndConvertObject(value);
         }
       }
+    }
+  }
+
+  private testAndConvertString(response: Mutable<HttpResponse<string>>): void {
+    const converted = this.convertToDate(response.body);
+    if (converted) {
+      response.body = converted;
     }
   }
 
@@ -81,3 +99,5 @@ export class NgHttpDateInterceptor implements HttpInterceptor {
     return null;
   }
 }
+
+type Mutable<T> = { -readonly [P in keyof T]: T[P] };
