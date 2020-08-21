@@ -23,10 +23,10 @@
   "peerDependencies": {
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
-    "moment": "^2.27.0",
+    "moment": "^2.25.1",
     "ng-http-date-core": "^10.0.0"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.1"
   }
 }

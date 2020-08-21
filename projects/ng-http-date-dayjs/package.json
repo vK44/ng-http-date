@@ -24,9 +24,9 @@
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
     "ng-http-date-core": "^10.0.0",
-    "dayjs": "^1.8.33"
+    "dayjs": "^1.8.0"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.1"
   }
 }
