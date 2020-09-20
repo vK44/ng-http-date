@@ -1,6 +1,6 @@
 {
   "name": "ng-http-date-dayjs",
-  "version": "9.0.0",
+  "version": "9.1.0",
   "description": "Detects and parses dates in Angular Http reponses and creates Day.js-objects within the reponse",
   "homepage": "https://github.com/vkennke/ng-http-date",
   "author": "Valentin Kennke <kennke@mailbox.org> (https://github.com/vkennke)",

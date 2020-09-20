@@ -1,6 +1,6 @@
 {
   "name": "ng-http-date",
-  "version": "9.0.2",
+  "version": "9.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,9 +23,9 @@
     "@angular/router": "~9.1.12",
     "dayjs": "~1.8.36",
     "moment": "~2.28.0",
-    "ng-http-date-core": "^9.0.2",
-    "ng-http-date-dayjs": "^9.0.0",
-    "ng-http-date-moment": "^9.0.0",
+    "ng-http-date-core": "^9.1.0",
+    "ng-http-date-dayjs": "^9.1.0",
+    "ng-http-date-moment": "^9.1.0",
     "rxjs": "~6.6.3",
     "tslib": "^1.13.0",
     "zone.js": "~0.10.3"
