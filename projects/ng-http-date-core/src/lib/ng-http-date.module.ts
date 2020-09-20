@@ -14,11 +14,11 @@ import {NgHttpDateConverter} from './ng-http-date.converter';
 })
 export class NgHttpDateModule {
 
-  static forRoot(config?: NgHttpDateConfiguration): ModuleWithProviders<NgHttpDateModule> {
+  static forRoot(config: NgHttpDateConfiguration = new DefaultNgHttpDateConfiguration()): ModuleWithProviders<NgHttpDateModule> {
     return {
       ngModule: NgHttpDateModule,
       providers: [
-        {provide: NgHttpDateConfiguration, useValue: {...new DefaultNgHttpDateConfiguration(), ...config}},
+        {provide: NgHttpDateConfiguration, useValue: config},
         {provide: NgHttpDateConverter, useExisting: NgHttpDateDateConverter, multi: true},
         {provide: HTTP_INTERCEPTORS, useExisting: NgHttpDateInterceptor, multi: true}
       ]

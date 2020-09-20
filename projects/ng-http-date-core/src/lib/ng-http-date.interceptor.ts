@@ -2,7 +2,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from
 import {Inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {NgHttpDateConfiguration} from './ng-http-date.configuration';
+import {DefaultNgHttpDateConfiguration, NgHttpDateConfiguration} from './ng-http-date.configuration';
 import {NgHttpDateConverter} from './ng-http-date.converter';
 
 @Injectable({
@@ -13,7 +13,8 @@ export class NgHttpDateInterceptor implements HttpInterceptor {
   private converter: NgHttpDateConverter<any>;
 
   constructor(private configuration: NgHttpDateConfiguration, @Inject(NgHttpDateConverter) converters: NgHttpDateConverter<any>[]) {
-    this.logIfDebugIsEnabled('configuration = ', () => configuration);
+    this.configuration = {...new DefaultNgHttpDateConfiguration(), ...this.configuration};
+    this.logIfDebugIsEnabled('configuration = ', () => this.configuration);
     const sortedConverters = converters.sort((c1, c2) => c1.getOrder() - c2.getOrder());
     this.logIfDebugIsEnabled('converters found: ', () => sortedConverters.map(c => c.getName() + ', order: ' + c.getOrder()));
     const highestPriority = converters[0].getOrder();
