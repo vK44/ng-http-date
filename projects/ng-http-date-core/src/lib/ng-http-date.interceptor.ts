@@ -10,17 +10,24 @@ import {NgHttpDateConverter} from './ng-http-date.converter';
 })
 export class NgHttpDateInterceptor implements HttpInterceptor {
 
-  private ISO8601_REGEX: RegExp = /^([+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24:?00)([.,]\d+(?!:))?)?(\17[0-5]\d([.,]\d+)?)?([zZ]|([+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/;
   private converter: NgHttpDateConverter<any>;
 
   constructor(private configuration: NgHttpDateConfiguration, @Inject(NgHttpDateConverter) converters: NgHttpDateConverter<any>[]) {
+    this.logIfDebugIsEnabled('configuration = ', () => configuration);
     const sortedConverters = converters.sort((c1, c2) => c1.getOrder() - c2.getOrder());
+    this.logIfDebugIsEnabled('converters found: ', () => sortedConverters.map(c => c.getName() + ', order: ' + c.getOrder()));
     const highestPriority = converters[0].getOrder();
+    this.logIfDebugIsEnabled('highestPriority: ', () => highestPriority);
     const convertersWithHighestPriority = sortedConverters.filter(c => c.getOrder() === highestPriority);
+    this.logIfDebugIsEnabled(
+      'convertersWithHighestPriority: ',
+      () => convertersWithHighestPriority.map(c => c.getName() + ', order: ' + c.getOrder())
+    );
     if (convertersWithHighestPriority.length > 1) {
       throw new Error('Multiple converters found: ' + convertersWithHighestPriority.map(c => c.getName()));
     }
     this.converter = convertersWithHighestPriority[0];
+    this.logIfDebugIsEnabled('converter is set to: ', () => this.converter.getName());
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -32,16 +39,21 @@ export class NgHttpDateInterceptor implements HttpInterceptor {
 
   private handleEvent(response: HttpEvent<any>): void {
     if (response instanceof HttpResponse) {
+      this.logIfDebugIsEnabled('test and convert response: ', () => response);
       this.testAndConvert(response);
+    } else {
+      this.logIfDebugIsEnabled('response is not converted because it is not an instance of HttpResponse: ', () => response);
     }
   }
 
   private testAndConvert(response: HttpResponse<any>): void {
     switch (typeof response.body) {
       case 'object':
+        this.logIfDebugIsEnabled('test an convert object response body: ', () => response.body);
         this.testAndConvertObject(response.body);
         break;
       case 'string':
+        this.logIfDebugIsEnabled('test an convert string response body: ', () => response.body);
         this.testAndConvertString(response);
         break;
     }
@@ -54,8 +66,10 @@ export class NgHttpDateInterceptor implements HttpInterceptor {
       while (i--) {
         const key = keys[i];
         const value = something[key];
+        this.logIfDebugIsEnabled(`testing property ${key} with value`, () => value);
         const converted = this.convertToDate(value);
         if (converted) {
+          this.logIfDebugIsEnabled(`converted property ${key} to`, () => converted);
           something[key] = converted;
         } else {
           this.testAndConvertObject(value);
@@ -68,35 +82,49 @@ export class NgHttpDateInterceptor implements HttpInterceptor {
     const converted = this.convertToDate(response.body);
     if (converted) {
       response.body = converted;
+      this.logIfDebugIsEnabled('converted response body to', () => converted);
     }
   }
 
   private convertToDate(something: unknown): any {
     if (typeof something !== 'string') {
+      this.logIfDebugIsEnabled('not converted because it is not a string: ', () => something);
       return null;
     }
     if (this.configuration.customRegex) {
       return this.convertWithCustomRegex(something);
     }
-    if (this.configuration.useIso8601Only) {
+    if (this.configuration.iso8601Only) {
       return this.convertIso8601(something);
     }
     return this.converter.convert(something);
   }
 
   private convertWithCustomRegex(dateString: string): any {
+    this.logIfDebugIsEnabled(`check with customRegex ${this.configuration.customRegex} for string `, () => dateString);
     if (this.configuration.customRegex.test(dateString)) {
+      this.logIfDebugIsEnabled(`customRegex ${this.configuration.customRegex} matched string `, () => dateString);
       return this.converter.convert(dateString);
     }
+    this.logIfDebugIsEnabled(`customRegex ${this.configuration.customRegex} NOT matched string `, () => dateString);
     return null;
   }
 
   private convertIso8601(dateString: string): any {
-    const regex = this.converter.getRegex() || this.ISO8601_REGEX;
+    const regex = this.converter.getRegex();
+    this.logIfDebugIsEnabled(`check with regex ${regex} for string `, () => dateString);
     if (dateString.length < 30 && regex.test(dateString)) {
+      this.logIfDebugIsEnabled(`regex ${regex} matched string `, () => dateString);
       return this.converter.convert(dateString);
     }
+    this.logIfDebugIsEnabled(`regex ${regex} NOT matched string `, () => dateString);
     return null;
+  }
+
+  private logIfDebugIsEnabled(message: string, ...args: (() => any)[]): void {
+    if (this.configuration.debug) {
+      console.log(message, ...(args.map(a => a.apply(this))));
+    }
   }
 }
 

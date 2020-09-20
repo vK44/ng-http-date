@@ -22,9 +22,9 @@ npm i ng-http-date
 
 If you're not using the current Angular version you should use an older version of `ng-http-date`:
 
-| Angular      | 10.x | 9.x | 8.2.x | older         |
+| Angular      |  10.x  | 9.x | 8.2.x | older         |
 |--------------|--------|-----|-------|---------------|
-| ng-http-date | 10.x   | 9.x | 8.x   | not supported |
+| ng-http-date |  10.x  | 9.x | 8.x   | not supported |
 
 
 Import the `NgHttpDateModule` in your root module:
@@ -36,7 +36,7 @@ import {NgHttpDateModule} from 'ng-http-date-core';
   declarations: [...],
   imports: [
     ...
-    NgHttpDateModule,
+    NgHttpDateModule.forRoot(),
     ...
   ],
   providers: [...],
@@ -68,6 +68,35 @@ this.http.get<ResultOfHttpCall>('someURL').subscribe((result: ResultOfHttpCall) 
 
 NgHttpDate registers an `HttpInterceptor` which tests each property of the response via an ISO8601 regex. 
 When a date is detected, the response is modified to create a `Date` object for that property.
+
+## Configuration
+
+Per default only ISO8601 date strings are converted. 
+In addition, all strings that correspond to an ISO8601 date are converted, which means that e.g. '2000' or '0001' also become a date.
+To configure this behavior you can pass a configuration object to the modules forRoot method:
+
+```typescript
+import {NgHttpDateModule} from 'ng-http-date-core';
+
+@NgModule({
+  declarations: [...],
+  imports: [
+    ...
+    NgHttpDateModule.forRoot({iso8601Only: false}), // converts RFC 2822 timestamps
+    ...
+  ],
+  providers: [...],
+  bootstrap: [...]
+})
+export class AppModule {
+  ...
+}
+```
+
+You have the following configuration options:
+- `iso8601Only` (default `false`) - pass `true` to convert every string that can be converted to a `Date` (or `moment` or `Dayjs`) object. This has a negative impact on performance.
+- `customRegex` (default `undefined`) - pass a custom `RegExp` which decides if a string is converted or not. This will set `iso8601Only` to false.
+- `debug` (default `false`) - pass `true` to print some more or less helpful debug messages to the browser console.
 
 ## Performance
 
