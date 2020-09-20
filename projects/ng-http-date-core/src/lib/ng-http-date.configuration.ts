@@ -1,11 +1,16 @@
 import {Injectable} from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class NgHttpDateConfiguration {
+@Injectable()
+export abstract class NgHttpDateConfiguration {
 
-  useIso8601Only = true;
+  iso8601Only?: boolean;
 
   customRegex?: RegExp;
+
+  debug?: boolean;
+}
+
+export class DefaultNgHttpDateConfiguration extends NgHttpDateConfiguration {
+  iso8601Only = true;
+  debug = false;
 }

@@ -25,9 +25,9 @@ npm i ng-http-date-moment
 
 If you're not using the current Angular version you should use an older version of `ng-htt-date-moment`:
 
-| Angular             | 10.0.x | 9.x | 8.2.x | older         |
+| Angular             |  10.x  | 9.x | 8.2.x | older         |
 |---------------------|--------|-----|-------|---------------|
-| ng-http-date-moment | 10.x   | 9.x | 8.x   | not supported |
+| ng-http-date-moment |  10.x  | 9.x | 8.x   | not supported |
 
 
 Import the `NgHttpDateMomentModule` in your root module:
@@ -40,7 +40,7 @@ import {NgHttpDateMomentModule} from 'ng-http-date-moment';
   declarations: [...],
   imports: [
     ...
-    NgHttpDateModule,
+    NgHttpDateModule.forRoot(),
     NgHttpDateMomentModule,
     ...
   ],
