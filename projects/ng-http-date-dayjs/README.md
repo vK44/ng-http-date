@@ -24,9 +24,9 @@ npm i ng-http-date-dayjs
 
 If you're not using the current Angular version you should use an older version of `ng-http-date-dayjs`:
 
-| Angular           |  10.x  | 9.x | 8.2.x | older         |
-|-------------------|--------|-----|-------|---------------|
-| ng-http-date-days |  10.x  | 9.x | 8.x   | not supported |
+| Angular            | 11.x | 10.x | 9.x | 8.2.x | older         |
+|--------------------|------|------|-----|-------|---------------|
+| ng-http-date-dayjs | 11.x | 10.x | 9.x | 8.x   | not supported |
 
 
 Import the `NgHttpDateDayjsModule` in your root module:
