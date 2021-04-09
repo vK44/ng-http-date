@@ -27,6 +27,6 @@
     "dayjs": "^1.8.0"
   },
   "dependencies": {
-    "tslib": "^2.0.3"
+    "tslib": "^2.2.0"
   }
 }
